@@ -1,0 +1,17 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Selected</title>
+</head>
+<body>
+    What chat would you like to enter?<br>
+    <form action="'chat-select'" method="POST">
+        <select id="chat_select">
+            <option value="{{zero}}" selected="selected">Zero Context</option>
+            <option value="{{hiking}}" >Hiking Chat</option>
+            <option value="{{openai}}">OpenAI Embeddings Chat</option>
+        </select>
+        <!-- <input id="chat_submit" type="button" value="Enter"> -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

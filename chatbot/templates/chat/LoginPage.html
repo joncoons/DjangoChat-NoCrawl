@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <img src = "{% static 'head_img.jpg' %}">
+    </head>
+<body>
+    <form method ="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        <button type = "submit">Login</button>
+    </form>    
+</body>
+</html>

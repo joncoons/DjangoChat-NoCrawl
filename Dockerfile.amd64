@@ -1,0 +1,30 @@
+FROM amd64/python:3.10-slim-buster
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+WORKDIR /app
+
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends \
+    python3-pip \
+    python3-dev \
+    gcc \
+    g++ \
+    build-essential \
+    pkg-config \
+    gnupg && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN python3 -m pip install --upgrade pip setuptools wheel
+RUN python3 -m pip install openai['embeddings']
+RUN python3 -m pip install -r requirements.txt
+RUN python3 -m pip install celery
+
+COPY . .
+
+EXPOSE 8000
+ENTRYPOINT [ "python3" ]
+CMD ["manage.py", "runserver", "0.0.0.0:8000"]

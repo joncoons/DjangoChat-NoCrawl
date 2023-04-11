@@ -1,0 +1,17 @@
+aiosqlite
+asgiref
+azure-identity
+certifi
+channels
+cryptography
+daphne
+Django
+matplotlib
+numpy
+# openai
+pandas
+plotly
+python-dotenv
+pyOpenSSL
+scipy
+urllib3

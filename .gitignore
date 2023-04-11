@@ -1,0 +1,5 @@
+config/
+archive/
+.env
+notes.txt
+test_chat.py

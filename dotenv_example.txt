@@ -1,0 +1,6 @@
+# populate your variable and rename file to .env
+AOAI_URI = "<your AOAI URI>"
+AOAI_API_KEY = "<your AOAI Key>"
+EMBEDDING_MODEL = "<your deployed Ada-002 deployment name>"
+COMPLETION_MODEL = "<your deployed Davinci-text deployment name>"
+CHATGPT_MODEL = "<your deployed gpt-35-turbo deployment name>"
