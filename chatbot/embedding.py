@@ -15,20 +15,21 @@ class LoadEmbeddingDF():
 
     def load_csv(self, csv_file):
         self.df=pd.read_csv(f'{csv_file}', index_col=0)
-        self.df['embeddings'] = self.df['embeddings'].apply(eval).apply(np.array)
+        self.df['embedding'] = self.df['embedding'].apply(eval).apply(np.array)
 
     def vector_distance(self, query):
         q_vector = self.new_embedding(query, self.e_model)
-        self.df['similarity'] = self.df['embeddings'].apply(lambda x: cosine_similarity(x, q_vector))
+        self.df['similarity'] = self.df['embedding'].apply(lambda x: cosine_similarity(x, q_vector))
         top_df = self.df.sort_values("similarity", ascending=False).nlargest(3, "similarity")
         returns = []
         for row in top_df.iterrows():
             if row[1]['text'] is None:
                 continue
             if row[1]['text'] is not None:
-                row_sentences = row[1]['text'].split(".")
-                url = "https://www.openai.com/" + row_sentences[0].replace('_',"/").replace('.',"")
-                returns.append('Source: \n' + row[1]['text'] + f'\n\n <a href>{url} target="_blank"<a>\n')
+                # row_sentences = row[1]['text'].split(".")
+                # url = "https://www.openai.com/" + row_sentences[0].replace('_',"/").replace('.',"")
+                url = row[1]['url']
+                returns.append(row[1]['text'] + f'\n\n <a href>{url} target="_blank"<a>\n\n\n')
         return_str = ''.join(str(x) for x in returns)
         # print(return_str)
         return return_str

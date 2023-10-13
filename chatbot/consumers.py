@@ -8,8 +8,6 @@ from .chatgpt import init_chatbot, new_message
 
 
 class ChatConsumer(WebsocketConsumer):
-    # def __init__(self):
-    #     self.room_group_name = "group_chat"
 
     def connect(self):
         self.room_group_name = "group_chat"

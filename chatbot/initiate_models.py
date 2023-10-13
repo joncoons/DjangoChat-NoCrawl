@@ -17,9 +17,14 @@ def setModels():
     openai.api_key = AOAI_API_KEY
     openai.api_base = AOAI_URI
     openai.api_version = AOAI_API_VERSION
-    aoai_url = openai.api_base + "/openai/deployments?api-version=2022-12-01"
+    aoai_url = openai.api_base + "/openai/deployments?api-version=2023-05-15"
 
-    r = requests.get(aoai_url, headers={"api-key": AOAI_API_KEY})
+    headers= {
+        "api-key": AOAI_API_KEY,
+        "Accept": 'text/event-stream'
+    }
+
+    r = requests.get(aoai_url, headers=headers)
     if r:
         print("Azure Open AI Models Instantiated")
 

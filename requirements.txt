@@ -1,6 +1,7 @@
 aiosqlite
 asgiref
 azure-identity
+celery
 certifi
 channels
 cryptography
@@ -8,10 +9,12 @@ daphne
 Django
 matplotlib
 numpy
-# openai
+openai
 pandas
 plotly
 python-dotenv
 pyOpenSSL
+requests
 scipy
+scikit-learn
 urllib3
